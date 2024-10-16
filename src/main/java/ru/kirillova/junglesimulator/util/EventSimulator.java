@@ -4,15 +4,15 @@ import ru.kirillova.junglesimulator.entity.Leopard;
 
 public class EventSimulator {
 
-  //0 -10  //леопард поспал - +20 энергии
+  //0 -10  //леопард поспал - +25 энергии
    // 10 - 15 // леопард побегал - 10 энергии
    // 15- 20 //на леопарда напали гиены - 35 здоровья
-   // 20 - 30 //на леопарда напал браконьер - 25 здоровья
+   // 20 - 30 //на леопарда напал браконьер - 23 здоровья
     // 30 - 35//леопард переплывает реку - 15 энергии
-   //35 - 40 //леопард съел антилопу - 8 энергия; коэфф * 8 здоровья
+   //35 - 40 //леопард съел антилопу - 5 энергия; коэфф * 8 здоровья
     // 40 - 50//леопард съел птицу  + 3 здоровья
    // 50 = 60 //леопард съел зебру - 5 энергия; коэфф * 8 здоровья
-    // 60 - 80 //леопард отдыхает + 6 энергия
+    // 60 - 80 //леопард отдыхает + 8 энергия
    //80 - 100 //леопард охотится - 10 энергия
     //энергия = 0 то -7 здоровья
 
@@ -45,7 +45,7 @@ public class EventSimulator {
 }
     private void sleepEvent(Leopard leopard) {
         int energy = leopard.getEnergy();
-        energy = energy + 20;
+        energy = energy + 25;
         if(energy > 100) {
             energy = 100;
         }
@@ -78,7 +78,7 @@ public class EventSimulator {
 
     private void poacherAttack(Leopard leopard) {
         int health = leopard.getHealth();
-        health = health - 25;
+        health = health - 23;
         if(health < 0) {
             health = 0;
         }
@@ -145,7 +145,7 @@ public class EventSimulator {
 
     private void restEvent(Leopard leopard) {
         int energy = leopard.getEnergy();
-        energy = energy + 6;
+        energy = energy + 8;
         if(energy > 100) {
             energy = 100;
         }
@@ -166,6 +166,7 @@ public class EventSimulator {
         System.out.println("Леопард охотится! - 10 энергии. Текущая энергия: " + leopard.getEnergy());
     }
     private boolean checkStatus(Leopard leopard) {
+        System.out.println("hp: " + leopard.getHealth() + " energy: " + leopard.getEnergy());
         if (leopard.getHealth() <= 0) {
             return false;
         } else {
