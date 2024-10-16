@@ -8,12 +8,13 @@ public class EventSimulator {
     //леопард побегал - 10 энергии
     //на леопарда напали гиены - 35 здоровья
     //на леопарда напал браконьер - 25 здоровья
+    //леопард переплывает реку - 15 энергии
+    //леопард съел антилопу - 5 энергия; + 15 здоровья
+    //леопард съел птицу  + 5 здоровья
+    //леопард съел зебру - 3 энергия; + 12 здоровья
+    //леопард отдыхает + 6 энергия
+    //леопард охотится - 10 энергия
     //энергия = 0 то -7 здоровья
-    //леопард съел антилопу - 8 энергия; + 15 здоровья
-    //леопард съел птицу - 3 энергия; + 5 здоровья
-    //леопард съел зебру - 7 энергия; + 12 здоровья
-    //леопард отдыхает + 5 энергия
-    //леопард охотится - 15 энергия
 
     public void activateEvent() {
 
@@ -38,6 +39,7 @@ public class EventSimulator {
         leopard.setEnergy(energy);
         System.out.println("Леопард побегал! -10 энергии. Текущая энергия:" + leopard.getEnergy());
     }
+
     private void hyenasAttack(Leopard leopard) {
         int health = leopard.getHealth();
         health = health - 35;
@@ -45,7 +47,19 @@ public class EventSimulator {
             health = 0;
         }
         leopard.setHealth(health);
+        System.out.println("На леопарда напали гиены! - 35 здоровья. Текущее здоровье:" + leopard.getHealth());
     }
+
+    private void poacherAttack(Leopard leopard) {
+        int health = leopard.getHealth();
+        health = health - 25;
+        if(health < 0) {
+            health = 0;
+        }
+        leopard.setHealth(health);
+        System.out.println("На леопарда напал браконьер! - 25 здоровья. Текущее здоровье:" + leopard.getHealth());
+    }
+
 
 
 
