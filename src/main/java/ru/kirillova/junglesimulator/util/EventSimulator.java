@@ -138,4 +138,15 @@ public class EventSimulator {
             return true;
         }
     }
+
+    private void energyChecker(Leopard leopard) {
+        if(leopard.getEnergy() <= 0) {
+            int health = leopard.getHealth();
+            health = health - 7;
+            if(health < 0) {
+                health = 0;
+            }
+            leopard.setHealth(health);
+        }
+    }
 }
