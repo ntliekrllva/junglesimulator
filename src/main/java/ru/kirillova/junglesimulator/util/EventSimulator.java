@@ -122,6 +122,15 @@ public class EventSimulator {
         System.out.println("Леопард отдохнул! + 6 энергии. Текущая энергия: " + leopard.getEnergy());
     }
 
+    private void huntEvent(Leopard leopard) {
+        int energy = leopard.getEnergy();
+        energy = energy - 10;
+        if(energy < 0 ) {
+            energy = 0;
+        }
+        leopard.setEnergy(energy);
+        System.out.println("Леопард охотится! - 10 энергии. Текущая энергия: " + leopard.getEnergy());
+
 
 
 }
