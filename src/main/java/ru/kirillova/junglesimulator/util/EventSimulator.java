@@ -11,7 +11,7 @@ public class EventSimulator {
     //леопард переплывает реку - 15 энергии
     //леопард съел антилопу - 8 энергия; коэфф * 8 здоровья
     //леопард съел птицу  + 3 здоровья
-    //леопард съел зебру - 5 энергия; + 8 здоровья
+    //леопард съел зебру - 5 энергия; коэфф * 8 здоровья
     //леопард отдыхает + 6 энергия
     //леопард охотится - 10 энергия
     //энергия = 0 то -7 здоровья
@@ -73,7 +73,7 @@ public class EventSimulator {
     private void leopardEatAntelope(Leopard leopard) {
         int energy = leopard.getEnergy();
         int health = leopard.getHealth();
-        energy = energy - 8;
+        energy = energy - 5;
         if(energy < 0) {
             energy = 0;
         }
@@ -96,7 +96,21 @@ public class EventSimulator {
         System.out.println("Леопард съел птицу! Текущее здоровье: " + leopard.getHealth());
     }
 
-
+    private void leopardEatZebra(Leopard leopard) {
+        int energy = leopard.getEnergy();
+        int health = leopard.getHealth();
+        energy = energy - 8;
+        if(energy < 0) {
+            energy = 0;
+        }
+        health = health + (int) (leopard.getFangs() * 8);
+        if(health > 100) {
+            health = 100;
+        }
+        leopard.setEnergy(energy);
+        leopard.setHealth(health);
+        System.out.println("Леопард съел зебру! Текущая энергия: " + leopard.getEnergy() + " Текущее здоровье: " + leopard.getHealth());
+    }
 
 
 }
