@@ -23,7 +23,7 @@ public class EventSimulator {
     private void sleepEvent(Leopard leopard) {
         int energy = leopard.getEnergy();
         energy = energy + 20;
-        if(energy > 100){
+        if(energy > 100) {
             energy = 100;
         }
         leopard.setEnergy(energy);
@@ -111,6 +111,17 @@ public class EventSimulator {
         leopard.setHealth(health);
         System.out.println("Леопард съел зебру! Текущая энергия: " + leopard.getEnergy() + " Текущее здоровье: " + leopard.getHealth());
     }
+
+    private void restEvent(Leopard leopard) {
+        int energy = leopard.getEnergy();
+        energy = energy + 6;
+        if(energy > 100) {
+            energy = 100;
+        }
+        leopard.setEnergy(energy);
+        System.out.println("Леопард отдохнул! + 6 энергии. Текущая энергия: " + leopard.getEnergy());
+    }
+
 
 
 }
