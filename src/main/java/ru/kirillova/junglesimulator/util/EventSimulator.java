@@ -125,12 +125,17 @@ public class EventSimulator {
     private void huntEvent(Leopard leopard) {
         int energy = leopard.getEnergy();
         energy = energy - 10;
-        if(energy < 0 ) {
+        if (energy < 0) {
             energy = 0;
         }
         leopard.setEnergy(energy);
         System.out.println("Леопард охотится! - 10 энергии. Текущая энергия: " + leopard.getEnergy());
-
-
-
+    }
+    private boolean statusChecker(Leopard leopard) {
+        if (leopard.getHealth() <= 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
