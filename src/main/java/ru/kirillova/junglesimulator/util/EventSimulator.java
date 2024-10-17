@@ -16,7 +16,7 @@ public class EventSimulator {
    //80 - 100 //леопард охотится - 10 энергия
     //энергия = 0 то -7 здоровья
 
-    public void startSimulation(Leopard leopard) {
+    public void startSimulation(Leopard leopard) throws InterruptedException{
         while(checkStatus(leopard)) {
             int eventNumber = (int) (Math.random() * 100);
             if (eventNumber <= 0 && eventNumber < 10) {
@@ -40,10 +40,11 @@ public class EventSimulator {
             } else if (eventNumber >= 80 && eventNumber < 100) {
                 huntEvent(leopard);
             }
+            Thread.sleep(1000);
         }
         System.out.println("Леопард умер! The end!");
 }
-    private void sleepEvent(Leopard leopard) {
+    private void sleepEvent(Leopard leopard)  {
         int energy = leopard.getEnergy();
         energy = energy + 25;
         if(energy > 100) {
@@ -52,6 +53,7 @@ public class EventSimulator {
         leopard.setEnergy(energy);
         checkEnergy(leopard);
         System.out.println("Леопард поспал! + 20 энергии. Текущая энергия: " + leopard.getEnergy());
+
     }
 
     private void move(Leopard leopard) {
